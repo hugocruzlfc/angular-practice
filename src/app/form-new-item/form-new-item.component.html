@@ -1,0 +1,54 @@
+<form>
+  <div class="row align-items-center">
+    <div class="col-auto">
+      <label for="newItem" class="col-form-label">New {{ label }}</label>
+    </div>
+    <div class="col-auto">
+      <input
+        type="text"
+        id="newItem"
+        class="form-control"
+        [ngModel]="selection?.name"
+        #newItem
+        name="newItem"
+      />
+    </div>
+    <div class="col-auto">
+      <button
+        class="btn"
+        [ngClass]="[className]"
+        (click)="onAddNewItem()"
+        *ngIf="!selection?.name"
+      >
+        Add {{ label }}
+      </button>
+      <!-- <button
+        class="btn"
+        [ngClass]="[className]"
+        (click)="onAddNewItem(newItem.value); newItem.value = ''"
+        newItem.value=""
+        *ngIf="!selection?.name"
+      >
+        Add {{ label }}
+      </button> -->
+      <button
+        class="btn"
+        [ngClass]="[className]"
+        (click)="onUpdateItem()"
+        *ngIf="selection?.name"
+      >
+        Update {{ label }}
+      </button>
+      <!-- <button
+        class="btn"
+        [ngClass]="[className]"
+        (click)="onUpdateItem(selection, newItem.value); newItem.value = ''"
+        newItem.value=""
+        *ngIf="selection?.name"
+      >
+        Update {{ label }}
+      </button> -->
+    </div>
+  </div>
+</form>
+<p>Count: {{ counterRender() }}</p>

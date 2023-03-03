@@ -1,0 +1,100 @@
+<h1>Contact form</h1>
+<h2>Id in url: {{ id }}</h2>
+
+<form #contactForm="ngForm" (ngSubmit)="onSubmit()">
+  <!-- <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm.value)"> -->
+  <div class="mb-4">
+    <label for="name" class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      name="name"
+      [(ngModel)]="model.name"
+      required
+      #name="ngModel"
+    />
+    <!-- <input
+      type="text"
+      class="form-control"
+      id="name"
+      name="name"
+      ngModel
+      required
+    /> -->
+    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+      This field is required
+    </div>
+  </div>
+  <div class="mb-4 form-check">
+    <label for="checkAdult" class="form-label"
+      >Are you over 18 years of age?</label
+    >
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="checkAdult"
+      name="checkAdult"
+      [(ngModel)]="model.checkAdult"
+      required
+      #checkAdult="ngModel"
+    />
+    <div
+      [hidden]="checkAdult.valid || checkAdult.pristine"
+      class="alert alert-danger"
+    >
+      This field is required
+    </div>
+  </div>
+  <div class="mb-4">
+    <label for="department" class="form-label">Department</label>
+    <select
+      type="text"
+      class="form-select form-select-sm"
+      id="department"
+      name="department"
+      [(ngModel)]="model.department"
+      required
+      #department="ngModel"
+    >
+      <option selected>Open this select</option>
+      <option value="marketing">Marketing</option>
+      <option value="sales">Sales</option>
+      <option value="other">Other</option>
+    </select>
+    <div
+      [hidden]="department.valid || department.pristine"
+      class="alert alert-danger"
+    >
+      This field is required
+    </div>
+  </div>
+  <div class="mb-4">
+    <label for="comment" class="form-label">Comment</label>
+    <textarea
+      class="form-control"
+      id="comment"
+      rows="4"
+      placeholder="Lave a comment!"
+      name="comment"
+      [(ngModel)]="model.comment"
+      required
+      #comment="ngModel"
+    ></textarea>
+    <div
+      [hidden]="comment.valid || comment.pristine"
+      class="alert alert-danger"
+    >
+      This field is required
+    </div>
+  </div>
+  <div class="d-grid gap-2 col-4 float-end">
+    <button
+      [disabled]="contactForm.invalid"
+      class="btn btn-info btn-lg"
+      type="submit"
+    >
+      Send
+    </button>
+  </div>
+</form>

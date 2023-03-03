@@ -1,0 +1,35 @@
+<!-- <li [ngClass]="'selected blue'">{{ city }}</li>
+        <li [ngClass]="['selected', 'blue']">{{ city }}</li>
+        <li [ngClass]="{'selected': false}">{{ city }}</li> -->
+<!-- <li
+                [ngClass]="{ selected: city === 'Barcelona', blue: city !== 'Barcelona' }"
+            >
+                {{ city }}
+            </li>
+            <li
+                [ngStyle]="{
+                color: 'red',
+                'background-color': city === 'Bellingham' ? 'blue' : 'green'
+                }"
+            >
+                {{ city }}
+            </li> -->
+
+<ul class="list-group">
+  <li
+    class="list-group-item m-1"
+    (click)="onCitySelected(city)"
+    [ngClass]="{ active: city?._id === selection?._id }"
+  >
+    {{ city.name | titlecase }}
+    <button
+      (click)="onCityDelete(city._id)"
+      class="btn btn-danger float-end"
+      type="button"
+      *ngIf="city?._id === selection?._id"
+    >
+      Delete
+    </button>
+  </li>
+</ul>
+<!-- <p>Count: {{ counterRender() }}</p> -->
